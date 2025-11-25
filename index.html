@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TecConfi - Seu universo digital, sempre em órbita.</title>
+    <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+
+    <!-- Bootstrap CSS e Icones -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Estilo Customizado da Marca -->
+    <style>
+        /* Paleta de Cores TecConfi */
+        :root {
+            --bs-primary: #007BA7; 
+            --bs-secondary: #6c757d;
+            --tec-orange: #CC5500;
+        }
+
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+        }
+        .btn-primary:hover {
+            background-color: #005a7a;
+            border-color: #005a7a;
+        }
+        .btn-outline-primary {
+            border-color: var(--bs-primary);
+            color: var(--bs-primary);
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--bs-primary);
+            color: white;
+        }
+        .text-primary {
+             color: var(--bs-primary) !important;
+        }
+         .bg-primary {
+             background-color: var(--bs-primary) !important;
+        }
+        .text-orange {
+            color: var(--tec-orange);
+        }
+        .section-padding {
+            padding: 80px 0;
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .carousel-item img {
+            height: 80vh;
+            object-fit: cover;
+            filter: brightness(0.6);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--tec-orange);
+        }
+
+        /* whatsapp flutuante */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: transform 0.2s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-float i {
+            margin-top: 15px;
+        }
+
+        /* Responsividade do Mapa */
+        .map-responsive {
+            overflow: hidden;
+            padding-bottom: 56.25%;
+            position: relative;
+            height: 0;
+        }
+        .map-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+        body {
+            position: relative;
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar-principal">
+
+    <!-- Menu Principal -->
+    <nav id="navbar-principal" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                 <img src="https://placehold.co/150x50/007BA7/FFFFFF?text=TecConfi&font=sans-serif" alt="Logo TecConfi">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#orcamento">Orçamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin.html"><i class="bi bi-gear"></i> Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carrossel (Início) -->
+    <section id="inicio">
+        <div id="carouselDestaques" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/desktop_moderno.jpg" class="d-block w-100" alt="Manutenção de Computadores">
+                    <div class="carousel-caption d-none d-md-block text-start" style="bottom: 20%; right: auto; left: 10%;">
+                        <h1 class="display-3 fw-bold">Performance e Confiabilidade</h1>
+                        <p class="lead fs-4">Otimização completa para seu PC voar. Evite travamentos e superaquecimento.</p>
+                        <a href="#servicos" class="btn btn-lg text-white" style="background-color: var(--tec-orange);">Conheça Nossos Serviços</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/escudo_digital.jpg" class="d-block w-100" alt="Segurança Digital">
+                    <div class="carousel-caption d-none d-md-block" style="bottom: 20%;">
+                        <h1 class="display-3 fw-bold">Segurança Digital Sem Complicação</h1>
+                        <p class="lead fs-4">Removemos vírus e malwares para proteger o que é mais importante para você.</p>
+                        <a href="#contato" class="btn btn-primary btn-lg">Fale com um Especialista</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                     <img src="img/close-da-placa-de-circuito-com-diferentes-componentes.jpg" class="d-block w-100" alt="Upgrade de Hardware">
+                    <div class="carousel-caption d-none d-md-block text-end" style="bottom: 20%; left: auto; right: 10%;">
+                        <h1 class="display-3 fw-bold">Upgrade Inteligente de Hardware</h1>
+                        <p class="lead fs-4">Dê uma nova vida ao seu computador com componentes de alta performance.</p>
+                        <a href="#servicos" class="btn btn-lg text-white" style="background-color: var(--tec-orange);">Ver Opções de Upgrade</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Nossos Principais Serviços</h2>
+                <p class="lead">Soluções pensadas para manter seu universo digital em perfeita órbita.</p>
+            </div>
+            <div class="row" id="lista-servicos">
+                <!-- Os serviços serão carregados dinamicamente via JavaScript -->
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Carregando...</span>
+                    </div>
+                    <p>Carregando serviços...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Orçamento -->
+    <section id="orcamento" class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Solicite um Orçamento</h2>
+                <p class="lead">Preencha o formulário abaixo e entraremos em contato em até 24 horas.</p>
+                <a href="admin.html" class="btn btn-primary mt-2">
+                    <i class="bi bi-list-ul me-2"></i>Ver Todos os Orçamentos
+                </a>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form id="form-orcamento" class="shadow p-4 rounded bg-light">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="orcamento-nome" class="form-label">Nome Completo *</label>
+                                <input type="text" class="form-control" id="orcamento-nome" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="orcamento-email" class="form-label">E-mail *</label>
+                                <input type="email" class="form-control" id="orcamento-email" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="orcamento-telefone" class="form-label">Telefone</label>
+                                <input type="tel" class="form-control" id="orcamento-telefone" placeholder="(49) 99999-9999">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="orcamento-servico" class="form-label">Serviço Desejado *</label>
+                                <select class="form-select" id="orcamento-servico" required>
+                                    <option value="">Selecione um serviço</option>
+                                    <!-- Opções serão carregadas dinamicamente -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="orcamento-descricao" class="form-label">Descreva seu problema ou necessidade</label>
+                            <textarea class="form-control" id="orcamento-descricao" rows="4" placeholder="Ex: Meu notebook está travando muito e demora para ligar..."></textarea>
+                        </div>
+                        <button type="submit" class="btn text-white w-100" style="background-color: var(--tec-orange);">
+                            <i class="bi bi-send me-2"></i>Enviar Solicitação de Orçamento
+                        </button>
+                    </form>
+                    <div id="orcamento-mensagem" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nós -->
+    <section id="sobre" class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold">Sobre a TecConfi</h2>
+                    <p class="lead">A TecConfi nasceu da paixão e da amizade de dois entusiastas da tecnologia, Lucas Almeida e Mariana Costa. Trabalhando por anos em grandes corporações de TI, eles perceberam uma lacuna gritante no mercado local de Chapecó: a falta de um serviço de manutenção de computadores que fosse ao mesmo tempo tecnicamente impecável e genuinamente humano.</p>
+                    <p>Em 2021, a TecConfi abriu suas portas com uma promessa simples: desmistificar a tecnologia e devolvê-la às mãos das pessoas. O objetivo não era apenas consertar computadores, mas empoderar os usuários, oferecendo diagnósticos transparentes e soluções honestas.</p>
+                     <div class="accordion mt-4" id="accordionValores">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Nossa Missão
+                            </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionValores">
+                            <div class="accordion-body">
+                                Oferecer soluções tecnológicas acessíveis, transparentes e de alta qualidade, garantindo a tranquilidade digital de nossos clientes.
+                            </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Nossa Visão
+                            </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionValores">
+                            <div class="accordion-body">
+                                Ser a empresa de suporte em TI mais confiável e recomendada da região Oeste de Santa Catarina.
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="map-responsive shadow rounded">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3550.803923575304!2d-52.61863588495033!3d-27.10006738303289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e4b5a38a37b6c3%3A0x738b56834a362395!2sAv.%20Get%C3%BAlio%20Dorneles%20Vargas%2C%201250%20-%20Centro%2C%20Chapec%C3%B3%20-%20SC%2C%2089801-000!5e0!3m2!1spt-BR!2sbr!4v1668021481549!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                     <p class="mt-3 text-center">
+                        <i class="bi bi-geo-alt-fill text-primary"></i> 
+                        Avenida Getúlio Vargas, Nº 1250, Sala 3, Centro, Chapecó - SC, CEP: 89801-000
+                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">O Que Nossos Clientes Dizem</h2>
+                <p class="lead">A confiança de quem mais importa para nós.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://placehold.co/100x100/EFEFEF/333?text=JS" alt="Joana Santos" class="testimonial-img mb-3">
+                            <p class="card-text fst-italic">"A equipe da TecConfi salvou nosso negócio! Conseguiram remover um ransomware e recuperar 99% dos nossos arquivos. A tranquilidade que temos agora não tem preço."</p>
+                            <footer class="blockquote-footer mt-3">Joana Santos <cite title="Source Title">Café Grão Dourado</cite></footer>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://placehold.co/100x100/EFEFEF/333?text=PM" alt="Pedro Martins" class="testimonial-img mb-3">
+                            <p class="card-text fst-italic">"O upgrade de SSD e RAM que eles recomendaram foi transformador. Renderizações que levavam 40 minutos agora terminam em menos de 10. Aumento de produtividade surreal!"</p>
+                            <footer class="blockquote-footer mt-3">Pedro Martins <cite title="Source Title">Editor de Vídeo Freelancer</cite></footer>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://placehold.co/100x100/EFEFEF/333?text=FO" alt="Família Oliveira" class="testimonial-img mb-3">
+                            <p class="card-text fst-italic">"Contratei a manutenção preventiva e a diferença foi nítida. A Mariana foi super atenciosa e explicou tudo. O notebook de 4 anos ficou parecendo novo. Recomendo!"</p>
+                            <footer class="blockquote-footer mt-3">Família Oliveira <cite title="Source Title">Cliente Residencial</cite></footer>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://placehold.co/100x100/EFEFEF/333?text=RA" alt="Ricardo Almeida" class="testimonial-img mb-3">
+                            <p class="card-text fst-italic">"Tive um problema de software que me impedia de trabalhar. O suporte remoto foi rápido e eficiente. Em menos de uma hora, o Lucas resolveu tudo sem eu precisar sair de casa."</p>
+                            <footer class="blockquote-footer mt-3">Ricardo Almeida <cite title="Source Title">Profissional Liberal</cite></footer>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <img src="https://placehold.co/100x100/EFEFEF/333?text=CS" alt="Carla Souza" class="testimonial-img mb-3">
+                            <p class="card-text fst-italic">"Meu HD externo com anos de fotos de família parou de funcionar. Pensei que tinha perdido tudo. A TecConfi conseguiu recuperar todos os meus arquivos. Alívio enorme!"</p>
+                            <footer class="blockquote-footer mt-3">Carla Souza <cite title="Source Title">Fotógrafa Amadora</cite></footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Entre em Contato</h2>
+                <p class="lead">Tem alguma dúvida ou precisa de um orçamento? Fale conosco!</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <form action="#" class="shadow p-4 rounded">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensagem" class="form-label">Mensagem</label>
+                            <textarea class="form-control" id="mensagem" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn text-white w-100" style="background-color: var(--tec-orange);">Enviar Mensagem</button>
+                    </form>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-4">
+                        <h4 class="fw-bold text-primary">Nossos Canais</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-3 fs-5"><i class="bi bi-telephone-fill text-orange me-2"></i> (49) 91234-5678</li>
+                            <li class="mb-3 fs-5"><i class="bi bi-whatsapp text-orange me-2"></i> (49) 91234-5678</li>
+                            <li class="mb-3 fs-5"><i class="bi bi-envelope-fill text-orange me-2"></i> contato@tecconfi.com.br</li>
+                            <li class="mb-3 fs-5"><i class="bi bi-geo-alt-fill text-orange me-2"></i> Av. Getúlio Vargas, 1250 - Chapecó/SC</li>
+                        </ul>
+                        <h4 class="fw-bold text-primary mt-4">Redes Sociais</h4>
+                         <a href="#" class="fs-2 me-2 text-dark"><i class="bi bi-instagram"></i></a>
+                         <a href="#" class="fs-2 me-2 text-dark"><i class="bi bi-facebook"></i></a>
+                         <a href="#" class="fs-2 me-2 text-dark"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white text-center p-3">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 TecConfi Soluções em TI Ltda. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5549912345678?text=Olá!%20Gostaria%20de%20um%20orçamento." class="whatsapp-float" target="_blank" title="Fale conosco pelo WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+        async function listarServicos() {
+            let url = './back-end/listar_servicos.php';
+            let resposta = await fetch(url);
+            let dados = await resposta.json();
+
+            let tagPai = document.getElementById('lista-servicos');
+            let filhos = '';
+
+            for(let item of dados){
+                filhos += `
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="${item.imagem}" class="card-img-top" alt="${item.titulo}" 
+                                 onerror="this.src='https://placehold.co/400x200/007BA7/FFFFFF?text=Serviço'">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold text-primary">${item.titulo}</h5>
+                                <p class="card-text">${item.descricao}</p>
+                                <div class="mt-auto">
+                                    <p class="fs-5 fw-bold text-orange">${item.preco}</p>
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span class="text-muted">
+                                            <i class="bi bi-heart-fill text-danger"></i> 
+                                            <span id="curtidas-${item.id}">${item.curtidas}</span> curtidas
+                                        </span>
+                                        <button class="btn btn-sm btn-outline-danger" onclick="curtir(${item.id})">
+                                            <i class="bi bi-heart"></i> Curtir
+                                        </button>
+                                    </div>
+                                    <a href="#orcamento" class="btn btn-outline-primary w-100">Solicitar Orçamento</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            tagPai.innerHTML = filhos;
+
+            let select = document.getElementById('orcamento-servico');
+            for(let item of dados){
+                let option = document.createElement('option');
+                option.value = item.titulo;
+                option.textContent = item.titulo;
+                select.appendChild(option);
+            }
+        }
+
+        async function curtir(id) {
+            let url = `./back-end/curtir_servico.php?id=${id}`;
+            let resposta = await fetch(url);
+            let dados = await resposta.json();
+
+            if (dados.sucesso) {
+                document.getElementById('curtidas-' + id).textContent = dados.curtidas;
+                
+                let btn = document.querySelector(`button[onclick="curtir(${id})"]`);
+                btn.classList.remove('btn-outline-danger');
+                btn.classList.add('btn-danger');
+                btn.innerHTML = '<i class="bi bi-heart-fill"></i> Curtido!';
+                
+                setTimeout(() => {
+                    btn.classList.remove('btn-danger');
+                    btn.classList.add('btn-outline-danger');
+                    btn.innerHTML = '<i class="bi bi-heart"></i> Curtir';
+                }, 2000);
+            }
+        }
+
+        async function inserir() {
+            let nome = document.getElementById('orcamento-nome').value;
+            let email = document.getElementById('orcamento-email').value;
+            let telefone = document.getElementById('orcamento-telefone').value;
+            let servico = document.getElementById('orcamento-servico').value;
+            let descricao = document.getElementById('orcamento-descricao').value;
+
+            let url = `./back-end/inserir_orcamento.php?nome=${encodeURIComponent(nome)}&email=${encodeURIComponent(email)}&telefone=${encodeURIComponent(telefone)}&servico=${encodeURIComponent(servico)}&descricao=${encodeURIComponent(descricao)}`;
+            let resposta = await fetch(url);
+            let dados = await resposta.json();
+
+            let mensagemDiv = document.getElementById('orcamento-mensagem');
+            if (dados.sucesso) {
+                mensagemDiv.innerHTML = `
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="bi bi-check-circle me-2"></i>${dados.mensagem}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+                document.getElementById('form-orcamento').reset();
+            } else {
+                mensagemDiv.innerHTML = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="bi bi-x-circle me-2"></i>${dados.mensagem}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            listarServicos();
+
+            let formOrcamento = document.getElementById('form-orcamento');
+            if (formOrcamento) {
+                formOrcamento.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    inserir();
+                });
+            }
+        });
+
+    </script>
+</body>
+</html>

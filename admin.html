@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TecConfi - Painel Administrativo</title>
+    <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+
+    <!-- Bootstrap CSS e Icones -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Estilo Customizado da Marca -->
+    <style>
+        /* Paleta de Cores TecConfi */
+        :root {
+            --bs-primary: #007BA7; 
+            --bs-secondary: #6c757d;
+            --tec-orange: #CC5500;
+        }
+
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+        }
+        .btn-primary:hover {
+            background-color: #005a7a;
+            border-color: #005a7a;
+        }
+        .text-primary {
+             color: var(--bs-primary) !important;
+        }
+        .bg-primary {
+             background-color: var(--bs-primary) !important;
+        }
+        .text-orange {
+            color: var(--tec-orange);
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .status-aprovado {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .status-pendente {
+            background-color: #ffc107;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .table th {
+            background-color: var(--bs-primary);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu Principal -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                 <img src="https://placehold.co/150x50/007BA7/FFFFFF?text=TecConfi&font=sans-serif" alt="Logo TecConfi">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house"></i> Voltar ao Site</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container py-5">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="fw-bold text-primary"><i class="bi bi-gear me-2"></i>Painel Administrativo</h1>
+                <p class="lead">Gerencie os orçamentos recebidos pelos clientes.</p>
+            </div>
+        </div>
+
+        <!-- Cards de Resumo -->
+        <div class="row mb-4">
+            <div class="col-md-4 mb-3">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title">Total de Orçamentos</h6>
+                                <h2 class="mb-0" id="total-orcamentos">0</h2>
+                            </div>
+                            <i class="bi bi-file-earmark-text fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title">Aprovados</h6>
+                                <h2 class="mb-0" id="total-aprovados">0</h2>
+                            </div>
+                            <i class="bi bi-check-circle fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card bg-warning text-dark">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title">Pendentes</h6>
+                                <h2 class="mb-0" id="total-pendentes">0</h2>
+                            </div>
+                            <i class="bi bi-clock fs-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabela de Orçamentos -->
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-table me-2"></i>Lista de Orçamentos</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Telefone</th>
+                                <th>Serviço</th>
+                                <th>Descrição</th>
+                                <th>Data</th>
+                                <th>Situação</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-orcamentos">
+                            <tr>
+                                <td colspan="9" class="text-center">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">Carregando...</span>
+                                    </div>
+                                    <p class="mt-2">Carregando orçamentos...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2023 TecConfi Soluções em TI Ltda. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+        async function listar() {
+            let url = './back-end/listar_orcamentos.php';
+            let resposta = await fetch(url);
+            let dados = await resposta.json();
+
+            let tagPai = document.getElementById('tabela-orcamentos');
+            let filhos = '';
+
+            if (dados.length === 0) {
+                tagPai.innerHTML = '<tr><td colspan="9" class="text-center">Nenhum orçamento cadastrado.</td></tr>';
+                return;
+            }
+
+            for(let item of dados){
+                let dataFormatada = formatarData(item.data_cadastro);
+                let statusClass = item.aprovado == 1 ? 'status-aprovado' : 'status-pendente';
+                let statusTexto = item.aprovado == 1 ? 'Aprovado' : 'Não Aprovado';
+                let botaoDisabled = item.aprovado == 1 ? 'disabled' : '';
+                let botaoTexto = item.aprovado == 1 ? '<i class="bi bi-check-lg"></i> Aprovado' : '<i class="bi bi-check-lg"></i> Aprovar';
+                let botaoClass = item.aprovado == 1 ? 'btn-secondary' : 'btn-success';
+
+                filhos += `
+                    <tr id="orcamento-row-${item.id}">
+                        <td><strong>#${item.id}</strong></td>
+                        <td>${item.nome}</td>
+                        <td>${item.email}</td>
+                        <td>${item.telefone || '-'}</td>
+                        <td>${item.servico}</td>
+                        <td>${item.descricao || '-'}</td>
+                        <td>${dataFormatada}</td>
+                        <td><span class="${statusClass}" id="status-${item.id}">${statusTexto}</span></td>
+                        <td>
+                            <button class="btn btn-sm ${botaoClass}" 
+                                    id="btn-aprovar-${item.id}"
+                                    onclick="aprovar(${item.id})" 
+                                    ${botaoDisabled}>
+                                ${botaoTexto}
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }
+
+            tagPai.innerHTML = filhos;
+            atualizarContadores(dados);
+        }
+
+        function atualizarContadores(dados) {
+            let total = dados.length;
+            let aprovados = dados.filter(o => o.aprovado == 1).length;
+            let pendentes = dados.filter(o => o.aprovado == 0).length;
+
+            document.getElementById('total-orcamentos').textContent = total;
+            document.getElementById('total-aprovados').textContent = aprovados;
+            document.getElementById('total-pendentes').textContent = pendentes;
+        }
+
+        async function aprovar(id) {
+            if (!confirm('Deseja realmente aprovar este orçamento?')) {
+                return;
+            }
+
+            let url = `./back-end/aprovar_orcamento.php?id=${id}`;
+            let resposta = await fetch(url);
+            let dados = await resposta.json();
+
+            if (dados.sucesso) {
+                let statusSpan = document.getElementById('status-' + id);
+                statusSpan.className = 'status-aprovado';
+                statusSpan.textContent = 'Aprovado';
+
+                let btn = document.getElementById('btn-aprovar-' + id);
+                btn.className = 'btn btn-sm btn-secondary';
+                btn.innerHTML = '<i class="bi bi-check-lg"></i> Aprovado';
+                btn.disabled = true;
+
+                let aprovados = parseInt(document.getElementById('total-aprovados').textContent);
+                let pendentes = parseInt(document.getElementById('total-pendentes').textContent);
+                document.getElementById('total-aprovados').textContent = aprovados + 1;
+                document.getElementById('total-pendentes').textContent = pendentes - 1;
+
+                alert('Orçamento aprovado com sucesso!');
+            }
+        }
+
+        function formatarData(dataString) {
+            let data = new Date(dataString);
+            return data.toLocaleDateString('pt-BR') + ' ' + data.toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'});
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            listar();
+        });
+
+    </script>
+</body>
+</html>
