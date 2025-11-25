@@ -6,10 +6,11 @@ Site institucional com sistema de orçamentos e serviços.
 
 ```
 tecconfi/
-├── index.html          - Página principal
-├── admin.html          - Painel administrativo
-├── banco_tecconfi.sql  - Script do banco de dados
-├── img/                - Imagens do site
+├── index.html              - Página principal
+├── admin_orcamentos.html   - Painel de Cadastro de Orçamentos
+├── admin_servicos.html     - Painel de Cadastro de Serviços
+├── banco_tecconfi.sql      - Script do banco de dados
+├── img/                    - Imagens do site
 └── back-end/
     ├── conexao.php           - Conexão com o banco
     ├── listar_servicos.php   - Lista serviços

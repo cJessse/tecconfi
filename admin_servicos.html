@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TecConfi - Gerenciar Serviços</title>
+    <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+
+    <!-- Bootstrap CSS e Icones -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Estilo Customizado da Marca -->
+    <style>
+        /* Paleta de Cores TecConfi */
+        :root {
+            --bs-primary: #007BA7; 
+            --bs-secondary: #6c757d;
+            --tec-orange: #CC5500;
+        }
+
+        .btn-primary {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+        }
+        .btn-primary:hover {
+            background-color: #005a7a;
+            border-color: #005a7a;
+        }
+        .btn-outline-primary {
+            border-color: var(--bs-primary);
+            color: var(--bs-primary);
+        }
+        .btn-outline-primary:hover {
+            background-color: var(--bs-primary);
+            color: white;
+        }
+        .text-primary {
+             color: var(--bs-primary) !important;
+        }
+        .bg-primary {
+             background-color: var(--bs-primary) !important;
+        }
+        .text-orange {
+            color: var(--tec-orange);
+        }
+        .navbar-brand img {
+            height: 40px;
+        }
+        .table th {
+            background-color: var(--bs-primary);
+            color: white;
+        }
+        .card-img-preview {
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .servico-card {
+            transition: transform 0.2s;
+        }
+        .servico-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu Principal -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                 <img src="https://placehold.co/150x50/007BA7/FFFFFF?text=TecConfi&font=sans-serif" alt="Logo TecConfi">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house"></i> Voltar ao Site</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin_orcamentos.html"><i class="bi bi-file-earmark-text"></i> Orçamentos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admin_servicos.html"><i class="bi bi-tools"></i> Serviços</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container py-5">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="fw-bold text-primary"><i class="bi bi-tools me-2"></i>Gerenciar Serviços</h1>
+                <p class="lead">Cadastre e visualize os serviços oferecidos pela TecConfi.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Formulário de Cadastro -->
+            <div class="col-lg-5 mb-4">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-plus-circle me-2"></i>Cadastrar Novo Serviço</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="form-servico">
+                            <div class="mb-3">
+                                <label for="servico-titulo" class="form-label">Título do Serviço *</label>
+                                <input type="text" class="form-control" id="servico-titulo" 
+                                       placeholder="Ex: Manutenção Preventiva" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="servico-descricao" class="form-label">Descrição *</label>
+                                <textarea class="form-control" id="servico-descricao" rows="4" 
+                                          placeholder="Descreva detalhadamente o serviço oferecido..." required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="servico-preco" class="form-label">Preço *</label>
+                                <input type="text" class="form-control" id="servico-preco" 
+                                       placeholder="Ex: R$ 150,00 ou Sob Consulta" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="servico-imagem" class="form-label">Caminho da Imagem</label>
+                                <input type="text" class="form-control" id="servico-imagem" 
+                                       placeholder="Ex: img/nome_da_imagem.jpg">
+                                <div class="form-text">Informe o caminho relativo da imagem na pasta do projeto.</div>
+                            </div>
+
+                            <!-- Preview da Imagem -->
+                            <div class="mb-3" id="preview-container" style="display: none;">
+                                <label class="form-label">Pré-visualização:</label>
+                                <div class="text-center">
+                                    <img id="preview-imagem" src="" class="card-img-preview img-fluid" alt="Preview">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn text-white w-100" style="background-color: var(--tec-orange);">
+                                <i class="bi bi-save me-2"></i>Cadastrar Serviço
+                            </button>
+                        </form>
+                        <div id="servico-mensagem" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de Serviços -->
+            <div class="col-lg-7">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="bi bi-list-ul me-2"></i>Serviços Cadastrados</h5>
+                        <span class="badge bg-light text-primary" id="total-servicos">0 serviços</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" id="lista-servicos">
+                            <div class="col-12 text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Carregando...</span>
+                                </div>
+                                <p class="mt-2">Carregando serviços...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 TecConfi Soluções em TI Ltda. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+        // Listar serviços cadastrados
+        async function listarServicos() {
+            let url = './back-end/listar_servicos.php';
+            let resposta = await fetch(url);
+            let dados = await resposta.json();
+
+            let tagPai = document.getElementById('lista-servicos');
+            let filhos = '';
+
+            if (dados.length === 0) {
+                tagPai.innerHTML = '<div class="col-12 text-center text-muted"><i class="bi bi-inbox fs-1"></i><p>Nenhum serviço cadastrado.</p></div>';
+                document.getElementById('total-servicos').textContent = '0 serviços';
+                return;
+            }
+
+            for(let item of dados){
+                filhos += `
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100 servico-card shadow-sm">
+                            <img src="${item.imagem}" class="card-img-top card-img-preview" alt="${item.titulo}" 
+                                 onerror="this.src='https://placehold.co/400x150/007BA7/FFFFFF?text=Serviço'">
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold text-primary">${item.titulo}</h6>
+                                <p class="card-text small text-muted">${item.descricao.substring(0, 80)}...</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold text-orange">${item.preco}</span>
+                                    <span class="badge bg-secondary">
+                                        <i class="bi bi-heart-fill"></i> ${item.curtidas}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            tagPai.innerHTML = filhos;
+            document.getElementById('total-servicos').textContent = dados.length + ' serviço(s)';
+        }
+
+        // Inserir novo serviço
+        async function inserirServico() {
+            let titulo = document.getElementById('servico-titulo').value;
+            let descricao = document.getElementById('servico-descricao').value;
+            let preco = document.getElementById('servico-preco').value;
+            let imagem = document.getElementById('servico-imagem').value;
+
+            let url = `./back-end/inserir_servico.php?titulo=${encodeURIComponent(titulo)}&descricao=${encodeURIComponent(descricao)}&preco=${encodeURIComponent(preco)}&imagem=${encodeURIComponent(imagem)}`;
+            
+            let resposta = await fetch(url);
+            let dados = await resposta.json();
+
+            let mensagemDiv = document.getElementById('servico-mensagem');
+            if (dados.sucesso) {
+                mensagemDiv.innerHTML = `
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="bi bi-check-circle me-2"></i>${dados.mensagem}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+                document.getElementById('form-servico').reset();
+                document.getElementById('preview-container').style.display = 'none';
+                listarServicos(); // Atualiza a lista
+            } else {
+                mensagemDiv.innerHTML = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="bi bi-x-circle me-2"></i>${dados.mensagem}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+            }
+        }
+
+        // Preview da imagem ao digitar o caminho
+        function atualizarPreview() {
+            let caminho = document.getElementById('servico-imagem').value;
+            let previewContainer = document.getElementById('preview-container');
+            let previewImagem = document.getElementById('preview-imagem');
+
+            if (caminho.trim() !== '') {
+                previewImagem.src = caminho;
+                previewImagem.onerror = function() {
+                    this.src = 'https://placehold.co/400x150/CC5500/FFFFFF?text=Imagem+não+encontrada';
+                };
+                previewContainer.style.display = 'block';
+            } else {
+                previewContainer.style.display = 'none';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            listarServicos();
+
+            // Formulário de cadastro
+            let formServico = document.getElementById('form-servico');
+            if (formServico) {
+                formServico.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    inserirServico();
+                });
+            }
+
+            // Preview da imagem
+            let inputImagem = document.getElementById('servico-imagem');
+            if (inputImagem) {
+                inputImagem.addEventListener('input', atualizarPreview);
+            }
+        });
+
+    </script>
+</body>
+</html>
